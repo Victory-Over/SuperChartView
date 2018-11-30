@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBaseBlack">#1E2024</color>
+    <color name="colorSelected">#1261FF</color>
+    <color name="colorLineStart">#139DFF</color>
+    <color name="colorLineEnd">#1C47FF</color>
+    <color name="colorText">#737373</color>
+    <color name="colorShadowStart">#331261FF</color>
+    <color name="colorShadowEnd">#33101113</color>
+    <color name="colorGrid">#803D3D3D</color>
+    <color name="colorCircle">#139DFF</color>
+    <color name="colorBackCircle">#101113</color>
+    <color name="colorIndicatorStart">#3E4B7B</color>
+    <color name="colorIndicatorEnd">#0780ED</color>
+</resources>

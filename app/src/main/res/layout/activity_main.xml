@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBaseBlack"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <com.victory.chartview.ScrollChartView
+            android:id="@+id/scroll_chart_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.victory.chartview.CircleIndicatorView
+            android:id="@+id/civ_main"
+            android:layout_width="33dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/shape_circle_indicator" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="折线" />
+</LinearLayout>
