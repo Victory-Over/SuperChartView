@@ -132,4 +132,53 @@ public class CircleIndicatorView extends View {
         mCircleY = circleY;
         invalidate();
     }
+
+
+    public int getmLineStartColor() {
+        return mLineStartColor;
+    }
+
+    public void setmLineStartColor(int mLineStartColor) {
+        this.mLineStartColor = mLineStartColor;
+    }
+
+    public int getmLineEndColor() {
+        return mLineEndColor;
+    }
+
+    public void setmLineEndColor(int mLineEndColor) {
+        this.mLineEndColor = mLineEndColor;
+    }
+
+    public int getmLineWidth() {
+        return mLineWidth;
+    }
+
+    public void setmLineWidth(int mLineWidth) {
+        this.mLineWidth = mLineWidth;
+    }
+
+    public int getmCircleRadius() {
+        return mCircleRadius;
+    }
+
+    public void setmCircleRadius(int mCircleRadius) {
+        this.mCircleRadius = mCircleRadius;
+    }
+
+    public int getmCircleColor() {
+        return mCircleColor;
+    }
+
+    public void setmCircleColor(int mCircleColor) {
+        this.mCircleColor = mCircleColor;
+    }
+
+    public int getmCircleBackColor() {
+        return mCircleBackColor;
+    }
+
+    public void setmCircleBackColor(int mCircleBackColor) {
+        this.mCircleBackColor = mCircleBackColor;
+    }
 }
