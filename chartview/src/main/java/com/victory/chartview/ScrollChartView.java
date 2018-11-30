@@ -247,9 +247,19 @@ public class ScrollChartView extends View {
     }
 
     public void setData(List<String> times, List<Double> dataList) {
+        Double min = Collections.min(dataList);
+        //如果数据里面有负数 则需要将每个数据都减去最大的负数 以防止负数出现
+        if (min < 0) {
+            this.dataList.clear();
+            for (int i = 0; i < dataList.size(); i++) {
+                this.dataList.add(dataList.get(i) - min);
+            }
+        } else {
+            this.dataList = dataList;
+        }
         this.timeList = times;
-        this.dataList = dataList;
-        maxData = Collections.max(dataList);
+        maxData = Collections.max(this.dataList);
+
         mEndRange = times.size() - 1;
         initValue();
         getPointList();

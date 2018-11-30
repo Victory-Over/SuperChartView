@@ -6,6 +6,13 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btn_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="折线" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
@@ -25,10 +32,19 @@
             android:background="@drawable/shape_circle_indicator" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_line"
+    <TextView
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="折线" />
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="55dp" />
 </LinearLayout>

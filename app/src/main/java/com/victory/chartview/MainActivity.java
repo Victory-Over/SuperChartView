@@ -7,14 +7,18 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
     private ScrollChartView scrollChartView;
     private CircleIndicatorView circleIndicatorView;
+    private TextView tvTime;
+    private TextView tvData;
 
     private ScrollChartView.LineType lineType = ScrollChartView.LineType.ARC;
 
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         scrollChartView = findViewById(R.id.scroll_chart_main);
         circleIndicatorView = findViewById(R.id.civ_main);
+        tvTime = findViewById(R.id.tv_time);
+        tvData = findViewById(R.id.tv_data);
 
         final Button btnLine = findViewById(R.id.btn_line);
         btnLine.setOnClickListener(new View.OnClickListener() {
@@ -59,19 +65,21 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void initData() {
-        List<String> list = new ArrayList<>();
+        final List<String> timeList = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            list.add(i + ":00");
+            timeList.add(i + ":00");
         }
 
-        List<Double> dataList = new ArrayList<>();
+        final List<Double> dataList = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             dataList.add((double) new Random().nextInt(100));
         }
-        scrollChartView.setData(list, dataList);
+        scrollChartView.setData(timeList, dataList);
         scrollChartView.setOnScaleListener(new ScrollChartView.OnScaleListener() {
             @Override
             public void onScaleChanged(int position) {
+                tvTime.setText(timeList.get(position));
+                tvData.setText(dataList.get(position) + "");
                 ScrollChartView.Point point = scrollChartView.getList().get(position);
                 circleIndicatorView.setCircleY(point.y);
             }
