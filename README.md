@@ -26,7 +26,9 @@ dependencies {
 #### 3、核心代码
 
 * ScrollChartView 可滚动的自定义图表
+
 每次滚动完成 计算滚动的位置，使indicate居中并回调当前位置的position 供外部使用
+
 ```Java
     /**
      * 调整indicate，使其居中。
@@ -52,8 +54,11 @@ dependencies {
 ```
 
 根据传入的position 计算出每个indicate的位置，用于画图 
+
 例如position = 5 * indicate总宽度(indicate宽度+indicatePadding间隔*2) = 80 
+
 则该下标的位置为 left = 400 , right = left+indicate。
+
 ```Java
     /**
      * 计算indicate的位置
@@ -98,8 +103,10 @@ dependencies {
     }
 ```
 
-this.position == position 判断当前的position与将要绘制的position是否一致，是则改变其颜色
-并判断SDK版本是否大于21(支持画圆角的矩形)
+this.position == position 判断当前的position与将要绘制的position是否一致
+
+是则改变其颜色并判断SDK版本是否大于21(支持画圆角的矩形)
+
 ```Java
     /**
      * 绘制指示标
@@ -124,6 +131,7 @@ this.position == position 判断当前的position与将要绘制的position是�
 ```
  
 同上，如果position一致则改变其大小和颜色
+
 ```Java
     /**
      * 绘制文字
@@ -154,6 +162,7 @@ this.position == position 判断当前的position与将要绘制的position是�
  ```
  
  绘制Line,支持折线和曲线，后续还会支持柱状图，曲线的绘制方式可以去了解下贝塞尔曲线。
+ 
  ```Java
    /**
      * 绘制折线图
@@ -191,7 +200,13 @@ this.position == position 判断当前的position与将要绘制的position是�
         }
     }
 ```
-最后是绘制阴影，判断是折线还是曲线， 绘制阴影的方式跟绘制Line的方式差不多 重点是path.close() 如果连接Path起点和终点能形成一个闭合图形,则会将起点和终点连接起来形成一个闭合图形
+
+最后是绘制阴影，判断是折线还是曲线， 绘制阴影的方式跟绘制Line的方式差不多 
+
+重点是path.close() 如果连接Path起点和终点能形成一个闭合图形
+
+则会将起点和终点连接起来形成一个闭合图形
+
 ```Java
     /**
      * 绘制阴影
@@ -236,8 +251,11 @@ this.position == position 判断当前的position与将要绘制的position是�
 ```
 
 * CircleIndicatorView 圆形的指示器
+
 这个自定义控件就比较简单，总共就三个重要的方法
+
 1、画圆 2、画线 3、设置圆的Y坐标
+
 ```Java
     private void drawCircle(Canvas canvas) {
         mCirclePaint.setColor(mCircleColor);
@@ -261,7 +279,9 @@ this.position == position 判断当前的position与将要绘制的position是�
         invalidate();
     }
 ```
+
 结合之前的图表控件回调，获取到position 然后根据position获取到当前下标的坐标，赋值Y轴值给圆形控件
+
 ```Java
     scrollChartView.setOnScaleListener(new ScrollChartView.OnScaleListener() {
             @Override
@@ -271,6 +291,8 @@ this.position == position 判断当前的position与将要绘制的position是�
             }
         });
 ```
+
+
 
 #### License
 
