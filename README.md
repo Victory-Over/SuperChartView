@@ -153,6 +153,7 @@ this.position == position 判断当前的position与将要绘制的position是�
     }
  ```
  
+ 绘制Line,支持折线和曲线，后续还会支持柱状图，曲线的绘制方式可以去了解下贝塞尔曲线。
  ```Java
    /**
      * 绘制折线图
@@ -189,7 +190,9 @@ this.position == position 判断当前的position与将要绘制的position是�
             canvas.drawPath(path, mLinePaint);
         }
     }
-
+```
+最后是绘制阴影，判断是折线还是曲线， 绘制阴影的方式跟绘制Line的方式差不多 重点是path.close() 如果连接Path起点和终点能形成一个闭合图形,则会将起点和终点连接起来形成一个闭合图形
+```Java
     /**
      * 绘制阴影
      */
