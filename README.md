@@ -21,7 +21,7 @@ dependencies {
 ```
 
 #### 2、效果展示
-![点我查看效果图](Resource/file_chartview.gif)
+![点我查看效果图](/Resource/file_chartview.gif)
 
 #### 3、核心代码
 
