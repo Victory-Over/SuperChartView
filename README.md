@@ -25,7 +25,7 @@ dependencies {
 
 #### 3、核心代码
 
-###### 1.ScrollChartView 可滚动的自定义图表
+* ScrollChartView 可滚动的自定义图表
 每次滚动完成 计算滚动的位置，使indicate居中并回调当前位置的position 供外部使用
 ```Java
     /**
@@ -233,4 +233,59 @@ this.position == position 判断当前的position与将要绘制的position是�
             canvas.drawPath(path, mShadowPaint);
         }
     }
+```
+
+* CircleIndicatorView 圆形的指示器
+这个自定义控件就比较简单，总共就三个重要的方法
+1、画圆 2、画线 3、设置圆的Y坐标
+```Java
+    private void drawCircle(Canvas canvas) {
+        mCirclePaint.setColor(mCircleColor);
+        canvas.drawCircle(getWidth() / 2, mCircleY, mCircleRadius, mCirclePaint);
+        mCirclePaint.setColor(mCircleBackColor);
+        canvas.drawCircle(getWidth() / 2, mCircleY, mCircleRadius / 2, mCirclePaint);
+    }
+
+    private void drawLine(Canvas canvas) {
+        int left = getWidth() / 2;
+        int bottom = getHeight();
+        int top = 0;
+        Path path = new Path();
+        path.moveTo(left, top);
+        path.lineTo(left, bottom);
+        canvas.drawPath(path, mLinePaint);
+    }
+
+    public void setCircleY(float circleY) {
+        mCircleY = circleY;
+        invalidate();
+    }
+```
+结合之前的图表控件回调，获取到position 然后根据position获取到当前下标的坐标，赋值Y轴值给圆形控件
+```Java
+    scrollChartView.setOnScaleListener(new ScrollChartView.OnScaleListener() {
+            @Override
+            public void onScaleChanged(int position) {
+                ScrollChartView.Point point = scrollChartView.getList().get(position);
+                circleIndicatorView.setCircleY(point.y);
+            }
+        });
+```
+
+#### License
+
+```
+Copyright [2018] [Victory-Over]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
