@@ -25,7 +25,8 @@ dependencies {
 
 #### 3、核心代码
 
-####### 每次滚动完成 计算滚动的位置，使indicate居中并回调当前位置的position 供外部使用
+###### 1.ScrollChartView 可滚动的自定义图表
+每次滚动完成 计算滚动的位置，使indicate居中并回调当前位置的position 供外部使用
 ```Java
     /**
      * 调整indicate，使其居中。
@@ -49,3 +50,31 @@ dependencies {
         onScaleChanged(position);
     }
 ```
+
+根据传入的position 计算出每个indicate的位置，用于画图 例如position = 5 * indicate总宽度(indicate宽度+indicatePadding*2) = 80 则该下标的位置为 left = 400 , right = 400+indicate。
+```Java
+    /**
+     * 计算indicate的位置
+     */
+    private void computeIndicateLoc(Rect outRect, int position) {
+        if (outRect == null) {
+            return;
+        }
+
+        int height = getHeight();
+        int indicate = getIndicateWidth();
+
+        int left = (indicate * position);
+        int right = left + indicate;
+        int top = getPaddingTop();
+        int bottom = height - getPaddingBottom();
+
+        if (isAlignTop()) {
+            bottom -= mIndicateBottomPadding;
+        } else {
+            top += mIndicateBottomPadding;
+        }
+
+        outRect.set(left, top, right, bottom);
+    }
+  ```
